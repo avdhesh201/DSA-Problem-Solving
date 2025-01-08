@@ -1,4 +1,4 @@
-Leetcode 125 , Array - 2 pointers 
+Leetcode 125 : Valid Palindrome , Array - 2 pointers 
 
 bool isPalindrome(string s) {
         int i =0 , j=s.size()-1;
