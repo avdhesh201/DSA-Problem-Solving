@@ -1,0 +1,15 @@
+Leetcode 11 : Container With Most Water , Array - 2 pointers
+
+int maxArea(vector<int>& height) {
+        int l=0 , r=height.size()-1;
+        int maxi=0;
+        while(l<r){
+            int width=r-l;
+            int curheight=min(height[l],height[r]);
+            int curarea=width*curheight;
+            maxi=max(maxi, curarea);
+            if(height[l]<height[r])l++;
+            else r--;
+        }
+        return maxi;
+    }
