@@ -1,0 +1,20 @@
+Leetcode 42 : Trapping Rain Water , Array - 2 pointers
+
+int trap(vector<int>& height) {
+       int i =0 , j =height.size()-1;
+       int leftmax=height[i], rightmax=height[j];
+       int res=0;
+       while(i<j){
+            if(leftmax<rightmax){
+                i++;
+                leftmax=max(leftmax, height[i]);
+                res+=leftmax-height[i];
+            }
+            else{
+                j--;
+                rightmax=max(rightmax, height[j]);
+                res+=rightmax-height[j];
+            }
+       }
+       return  res;
+    }
