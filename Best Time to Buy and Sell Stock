@@ -1,0 +1,24 @@
+Leetcode 121: Best Time to Buy and Sell Stock , Array -sliding window  
+
+int maxProfit(vector<int>& prices) {
+        int maxi=0,i=0,j=0;
+        while(j<prices.size()){
+            if(prices[i]<prices[j])maxi=max(maxi,prices[j]-prices[i]);
+            else i=j;
+            j++;
+        } 
+        return maxi;
+    }
+
+
+--------------------------------------------------------
+greedy solution :
+
+int maxProfit(vector<int>& prices) {
+        int x=INT_MAX, y=0;
+        for(auto it : prices){
+            x=min(x,it);
+            y=max(y, it-x);
+        }
+        return y ;
+    }
