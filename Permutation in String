@@ -1,0 +1,32 @@
+Leetcode 567 : Permutation in String , Array -sliding window  
+
+bool checkInclusion(string s1, string s2) {
+    int s1_len = s1.size();
+    int s2_len = s2.size();
+
+    if (s1_len > s2_len) return false;
+
+    vector<int> s1_count(26, 0);
+    vector<int> window_count(26, 0);
+    vector<int> ans;
+
+    // Initialize the counts for the first window
+    for (int i = 0; i < s1_len; i++) {
+        s1_count[s1[i] - 'a']++;
+        window_count[s2[i] - 'a']++;
+    }
+
+    // Check if the first window matches
+    if (s1_count == window_count) ans.push_back(0);
+
+    // Slide the window over s2
+    for (int i = s1_len; i < s2_len; i++) {
+        window_count[s2[i - s1_len] - 'a']--;
+        window_count[s2[i] - 'a']++;
+
+        if (s1_count == window_count) ans.push_back(i - s1_len + 1);
+    }
+
+    // If ans is not empty, return true
+    return !ans.empty();
+    }
