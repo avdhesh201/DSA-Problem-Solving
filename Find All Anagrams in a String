@@ -1,0 +1,26 @@
+Leetcode 438 : Find All Anagrams in a String , Array -sliding window  
+
+ vector<int> findAnagrams(string s, string p) {
+        int slen=s.size();
+        int plen=p.size();
+
+        if(slen<plen)return {};
+
+        vector<int>pcount(26,0);
+        vector<int>window(26,0);
+        //for intial window 
+        for( int i =0 ;i<plen;i++){
+            pcount[p[i]-'a']++;
+            window[s[i]-'a']++;
+        }
+        vector<int>ans;
+        if(pcount==window)ans.push_back(0);
+
+        // for the next windows 
+        for( int i =plen ; i<slen ;i++){
+            window[s[i-plen]-'a']--;
+            window[s[i]-'a']++;
+            if(pcount==window)ans.push_back(i-plen+1);
+        }
+        return ans ;
+    }
