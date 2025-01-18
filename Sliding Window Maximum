@@ -1,0 +1,32 @@
+Leetcode 239 : Sliding Window Maximum, Array -sliding window  
+
+   vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        deque <int> q;
+        int len = nums.size();
+        vector<int> ans;
+        //getting first k elements processed in descending order
+        // queue must be either a single element or in a descending order
+        for(int i=0;i<k;i++){
+            while(!q.empty() && q.back()<nums[i]){
+                q.pop_back();
+            } //adding the last element of our current window in a descending way 
+            q.push_back(nums[i]);
+        }
+        ans.push_back(q.front()); // storing ans for the first window
+        //now using the first window we are going to find the max of all the windows
+        for(int i=k;i<len;i++){
+            // we delete the last element of the the last window if present, if it present it will be at front
+            if(!q.empty() && nums[i-k]==q.front()){
+                q.pop_front();
+            }
+            // we repeat the process of adding the last element of our current window in a descending way
+         while(!q.empty() && q.back()<nums[i]){
+             q.pop_back();
+         }                
+            q.push_back(nums[i]);
+            ans.push_back(q.front());    
+            
+        }
+        return ans;
+    }
+
