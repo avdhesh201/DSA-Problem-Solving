@@ -1,0 +1,43 @@
+Leetcode 217 : Contains Duplicate, Array - Hashing 
+
+bool containsDuplicate(vector<int>& nums) {
+       int n = nums.size();    
+       unordered_set<int>setting;
+       for(int i=0;i<n;i++){
+           if(setting.find(nums[i]) != setting.end()) return 1;
+           else setting.insert(nums[i]);
+       }
+       return 0;
+    }
+
+
+bool containsDuplicate(vector<int>& nums) {
+       int n = nums.size();    
+       unordered_set<int>setting;
+       for(int i=0;i<n;i++){
+           setting.insert(nums[i]);
+       }
+       if(n==setting.size()) return 0;
+       else return 1;
+    }
+
+
+ bool containsDuplicate(vector<int>& nums) {
+        unordered_map<int,int>m; // it store key value
+        for(auto a :nums) m[a]++;  // freq nikal lo 
+        for(auto a :m) {
+            if(a.second>1) return 1;
+        }
+        return 0;
+    }
+
+
+bool containsDuplicate(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        for (int i = 0; i <n-1; i++) {
+            if (nums[i] == nums[i +1])
+                return true;
+        }
+        return false;
+    }
