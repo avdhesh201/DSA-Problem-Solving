@@ -1,0 +1,18 @@
+Leetcode 238: Product of Array Except Self
+
+ vector<int> productExceptSelf(vector<int>& nums) {
+        vector<int>ans(nums.size());
+        vector<int>lp(nums.size());
+        vector<int>rp(nums.size());
+
+        lp[0]=1;
+        for(int i =1 ;i< nums.size();i++)lp[i]=lp[i-1]*nums[i-1];
+
+        rp[nums.size()-1]=1;
+        for(int i =nums.size()-2;i>=0;i--)rp[i]=rp[i+1]*nums[i+1];
+
+        for(int i =0 ; i< nums.size();i++)ans[i]=lp[i]*rp[i];
+        
+        return ans;
+        
+    }
