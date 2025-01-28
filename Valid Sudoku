@@ -1,0 +1,20 @@
+Leetcode 36: Valid Sudoku
+
+bool isValidSudoku(vector<vector<char>>& board) {
+        int checkrow[10][10]={0},
+            checkcol[10][10]={0},
+            checkbox[10][10]={0};   
+        for(int row=0;row<9;row++){
+            for(int col=0;col<9;col++){
+                if(board[row][col]!='.'){        
+                    int num=board[row][col]-'0';  // char to int conversion    
+                    int box=(row/3)*3+(col/3);    // for a box check
+                    //if number already exists  return false 
+                    if(checkrow[row][num] || checkcol[num][col] || checkbox[box][num]) return false;   
+                    // else mark every thing true 
+                    checkrow[row][num]=checkcol[num][col]=checkbox[box][num]=true;      
+                }
+            }
+        }
+        return true;
+    }
