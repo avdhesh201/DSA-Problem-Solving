@@ -1,0 +1,19 @@
+LeetCode 1480 :  Running Sum of 1d Array
+
+vector<int> runningSum(vector<int>& nums) {
+        for (int i = 1; i < nums.size(); i++) {
+            nums[i] += nums[i - 1];
+        }
+        return nums;
+    }
+
+---------------------------------------------------------------------------------------
+    
+    vector<int> runningSum(vector<int>& nums) {
+        int n = a.size();
+        vector<int> pref(n);
+        pref[0] = a[0];
+        for (int i = 1; i < n; i++) pref[i] = pref[i - 1] + a[i];
+        return pref;
+        }
+    
