@@ -21,5 +21,5 @@ Aim to Revisit Every Topic of DSA
    
    2.2)  [Two Sum : Input Array Is Sorted](https://github.com/avdhesh201/DSA-Problem-Solving/blob/main/Two%20Sum%20%3A%20Input%20Array%20Is%20Sorted)
 
-   2.3)
+   2.3)  [3 Sum ](https://github.com/avdhesh201/DSA-Problem-Solving/blob/main/3%20sum) 
    
