@@ -1,0 +1,18 @@
+Leetcode 303: Range Sum Query - Immutable
+
+    vector<int> pref;
+    vector<int> generatePrefixSum(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> pref(n + 1);
+        for (int i = 0; i < n; i++) pref[i + 1] = pref[i] + nums[i];
+        return pref;
+    }
+    
+    NumArray(vector<int>& nums) {
+        pref.resize(nums.size() + 1);
+        pref = generatePrefixSum(nums);
+    }
+    
+    int sumRange(int left, int right) {
+        return pref[right + 1] - pref[left];
+    }
