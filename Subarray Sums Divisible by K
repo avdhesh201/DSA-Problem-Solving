@@ -1,0 +1,16 @@
+Leetcode 974 : Subarray Sums Divisible by K
+
+int subarraysDivByK(vector<int>& nums, int k) {
+        unordered_map<int,int>remaindercount;
+        remaindercount[0]=1;
+        int prefixsum=0;
+        int count=0;
+        for(auto x : nums){
+            prefixsum+=x;
+            int remainder=prefixsum%k;
+            if(remainder<0)remainder+=k;
+            if(remaindercount.find(remainder)!=remaindercount.end())count+=remaindercount[remainder];
+            remaindercount[remainder]++;
+        }
+        return count;
+    }
